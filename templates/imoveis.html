@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section>
+    <div class='container mt-5'>
+        <div class='row'>
+            <div class='col-12'>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Numero</th>
+                        <th>Localizacao</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                    </tr>
+                    {% for imovel in todos_imoveis %}
+                    <tr>
+                        <td>{{ imovel[1] }}</td>
+                        <td>{{ imovel[2] }}</td>
+                        <td>{{ imovel[3] }}</td>
+                        <td>{{ imovel[4] }}</td>
+                        <td>{{ imovel[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

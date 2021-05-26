@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section>
+    <div class='container mt-5'>
+        <div class='row'>
+            <div class='col-12'>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nascimento</th>
+                        <th>CI</th>
+                        <th>CPF/CNPJ</th>
+                        <th>Tel. celular</th>
+                        <th>Tel. fixo</th>
+                    </tr>
+                    {% for cliente in todos_clientes %}
+                    <tr>
+                        <td>{{ cliente[1] }}</td>
+                        <td>{{ cliente[2] }}</td>
+                        <td>{{ cliente[3] }}</td>
+                        <td>{{ cliente[4] }}</td>
+                        <td>{{ cliente[5] }}</td>
+                        <td>{{ cliente[6] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
