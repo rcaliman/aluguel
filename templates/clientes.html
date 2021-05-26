@@ -13,6 +13,7 @@
                         <th>CPF/CNPJ</th>
                         <th>Tel. celular</th>
                         <th>Tel. fixo</th>
+                        <th>Ação</th>
                     </tr>
                     {% for cliente in todos_clientes %}
                     <tr>
@@ -22,6 +23,8 @@
                         <td>{{ cliente[4] }}</td>
                         <td>{{ cliente[5] }}</td>
                         <td>{{ cliente[6] }}</td>
+                        <td><a class="btn btn-primary"
+                            href="editarcliente?id={{ cliente[0] }}" role="button">editar</a></td>
                     </tr>
                     {% endfor %}
                 </table>

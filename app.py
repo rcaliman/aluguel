@@ -25,6 +25,18 @@ def clientes():
                                 ) 
     else:
         return render_template('login.html')
+    
+@app.route('/editarcliente', methods=['GET'])
+def editarcliente():
+    if f.logado():
+        id_cliente = f.extrai_id_da_url(request.url)
+        cliente = Cliente.busca_cliente(id_cliente)
+        return render_template  (
+                                    'editarcliente.html',
+                                    cliente = cliente
+                                )
+    else:
+        return render_template('login.html')
 
 @app.route('/imoveis')
 def imoveis():

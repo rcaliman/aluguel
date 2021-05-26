@@ -10,7 +10,15 @@ class Cliente:
         self.tel1 = tel1
         self.tel2 = tel2
         
-        
+    @staticmethod
+    def busca_cliente(id):
+        parametros = parametros_banco.parametros()
+        with UsaBanco(parametros) as cursor:
+            _SQL = f"""select * from al_clientes where id = {id};"""
+            cursor.execute(_SQL)
+            return cursor.fetchall()
+            
+     
     @staticmethod
     def busca_todos():
         parametros = parametros_banco.parametros()
