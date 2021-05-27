@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class='container mt-5'>
+    <div class='row justify-content-center'>
+        <div class='col-6 primary'>
+            <form class="row gy-2 gx-3 align-items-center" method='post' action='/clientes'>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">nome:</label>
+                    <input type="hidden" value='{{ cliente[0][0] }}' name='id' class="form-control" id="id">
+                    <input type="text" value='{{ cliente[0][1] }}' name='nome' class="form-control" id="nome">
+                </div>
+                <div class="mb-3">
+                    <label for="nascimento" class="form-label">nascimento:</label>
+                    <input type="text" value='{{ cliente[0][2] }}' name='data_nasc' class="form-control"
+                        id="nascimento">
+                </div>
+                <div class="mb-3">
+                    <label for="ci" class="form-label">identidade:</label>
+                    <input type="text" value='{{ cliente[0][2] }}' name='ci' class="form-control" id="ci">
+                </div>
+                <div class="mb-3">
+                    <label for="cpf" class="form-label">cpf:</label>
+                    <input type="text" value='{{ cliente[0][4] }}' name='cpf' class="form-control" id="cpf">
+                </div>
+                <div class="mb-3">
+                    <label for="tel1" class="form-label">celular:</label>
+                    <input type="text" value='{{ cliente[0][5] }}' name='tel1' class="form-control" id="tel1">
+                </div>
+                <div class="mb-3">
+                    <label for="tel2" class="form-label">fixo:</label>
+                    <input type="text" value='{{ cliente[0][6] }}' name='tel2' class="form-control" id="tel2">
+                </div>
+                <div class="accordion accordion-flush" id="accordionFlushClientes">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                salvar:
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushClientes">
+                            <div class="accordion-body">
+                                <button type="submit" class="btn btn-primary">
+                                    salvar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                apagar:
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushClientes">
+                            <div class="accordion-body">
+                                <button type='submit' class='btn btn-danger' name='apagar' value='True'>
+                                    apagar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer class='mt-5'></footer>
+{% endblock %}

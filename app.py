@@ -15,13 +15,31 @@ def inicio():
     else:
         return render_template('login.html')  
     
-@app.route('/clientes')
+@app.route('/clientes', methods=['POST','GET'])
 def clientes():
+    x = 'nao funcionou'
+    if request.form:            
+        cliente = Cliente   (
+                                request.form['id'],
+                                request.form['nome'],
+                                request.form['data_nasc'],
+                                request.form['ci'],
+                                request.form['cpf'],
+                                request.form['tel1'],
+                                request.form['tel2'],
+                            )
+        try:  
+            if request.form['apagar']:
+                cliente.apagar()
+        except:
+            cliente.salvar()
+        
     if f.logado():
         todos_clientes = Cliente.busca_todos()
         return render_template  (
                                     'clientes.html',
-                                    todos_clientes = todos_clientes
+                                    todos_clientes = todos_clientes,
+                                    x = x
                                 ) 
     else:
         return render_template('login.html')
@@ -32,7 +50,7 @@ def editarcliente():
         id_cliente = f.extrai_id_da_url(request.url)
         cliente = Cliente.busca_cliente(id_cliente)
         return render_template  (
-                                    'editarcliente.html',
+                                    'form_clientes.html',
                                     cliente = cliente
                                 )
     else:
@@ -60,6 +78,6 @@ def logar():
 @app.route('/deslogar')
 def deslogar():
     session.pop('usuario', default=None)
-    return redirect('/')
+    return render_template('login.html')
     
 app.run(debug=True)
