@@ -71,9 +71,37 @@ def editarcliente():
     else:
         return render_template('login.html')
 
-@app.route('/imoveis')
+@app.route('/imoveis', methods=['POST','GET'])
 def imoveis():
     if f.logado():
+        if request.form:    #instancia a classe Cliente com os dados do formulario de form_clientes       
+            try:
+                imovel = Imovel   (
+                                        request.form['id'],
+                                        request.form['tipo'],
+                                        request.form['numero'],
+                                        request.form['localizacao'],
+                                        request.form['nome'],
+                                        request.form['valor'],
+                                        request.form['observacao'],
+                                        request.form['dia_base'],
+                                    )
+            except:
+                imovel = Imovel   (
+                                        '0', # se o formulario nao retorna o id significa novo cliente
+                                        request.form['tipo'],
+                                        request.form['numero'],
+                                        request.form['localizacao'],
+                                        request.form['nome'],
+                                        request.form['valor'],
+                                        request.form['observacao'],
+                                        request.form['dia_base'],
+                                    )
+            try:  
+                if request.form['apagar']:
+                    imovel.apagar()
+            except:
+                imovel.salvar() 
         todos_imoveis = Imovel.busca_todos()
         return render_template  (
                                     'imoveis.html',
