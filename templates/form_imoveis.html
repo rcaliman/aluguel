@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class='container mt-5'>
+    <div class='row justify-content-center'>
+        <div class='col-6 primary'>
+            <form class="row gy-2 gx-3 align-items-center" method='post' action='/clientes'>
+                {% if imovel == '00' %}
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">tipo:</label>
+                    <input type="text" name='tipo' class="form-control" id="tipo">
+                </div>
+                <div class="mb-3">
+                    <label for="numero" class="form-label">numero:</label>
+                    <input type="text" name='numero' class="form-control" id="numero">
+                </div>
+                <div class="mb-3">
+                    <label for="localizacao" class="form-label">localizacao:</label>
+                    <input type="text" name='localizacao' class="form-control" id="localizacao">
+                </div>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">nome:</label>
+                    <input type="text" name='nome' class="form-control" id="nome">
+                </div>
+                <div class="mb-3">
+                    <label for="valor" class="form-label">valor:</label>
+                    <input type="text" name='valor' class="form-control" id="valor">
+                </div>
+                {% else %}
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">tipo:</label>
+                    <input type="text" name='tipo' value='{{ imovel[0][1]}}' class="form-control" id="tipo">
+                </div>
+                <div class="mb-3">
+                    <label for="numero" class="form-label">numero:</label>
+                    <input type="text" name='numero' value='{{ imovel[0][2]}}' class="form-control" id="numero">
+                </div>
+                <div class="mb-3">
+                    <label for="localizacao" class="form-label">localizacao:</label>
+                    <input type="text" name='localizacao' class="form-control" value='{{ imovel[0][3]}}'
+                        id="localizacao">
+                </div>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">nome:</label>
+                    <input type="text" name='nome' class="form-control" value='{{ imovel[0][4]}}' id="nome">
+                </div>
+                <div class="mb-3">
+                    <label for="valor" class="form-label">valor:</label>
+                    <input type="text" name='valor' class="form-control" value='{{ imovel[0][5]}}' id="valor">
+                </div>
+                {% endif %}
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        salvar
+                    </button>
+                </div>
+                {% if imovel != '00' %}
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                <im class='fonteclara'>apagar</im>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body fonteclara">
+                                <button type='submit' class='btn-xs btn-danger' name='apagar' value='True'>
+                                    apagar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+<footer class='mt-5'></footer>
+{% endblock %}

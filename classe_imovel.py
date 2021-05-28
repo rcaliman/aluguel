@@ -12,6 +12,14 @@ class Imovel:
         self.observacao = observacao
         self.dia_base = dia_base
         
+    @staticmethod
+    def busca_imovel(id):
+        """busca um imovel no banco"""
+        parametros = parametros_banco.parametros()
+        with UsaBanco(parametros) as cursor:
+            _SQL = f"""select * from al_imoveis where id = {id};"""
+            cursor.execute(_SQL)
+            return cursor.fetchall()
         
     @staticmethod    
     def busca_todos():

@@ -5,13 +5,15 @@
     <div class='container mt-5'>
         <div class='row'>
             <div class='col-12'>
-                <table class="table table-striped">
+                <a class='btn btn-primary' href='editarimovel?id=00'>adicionar novo imovel</a>
+                <table class="table table-striped mt-2">
                     <tr>
                         <th>Tipo</th>
                         <th>Numero</th>
                         <th>Localizacao</th>
-                        <th>Nome</th>
+                        <th>Locatario</th>
                         <th>Valor</th>
+                        <th>Ação</th>
                     </tr>
                     {% for imovel in todos_imoveis %}
                     <tr>
@@ -20,6 +22,8 @@
                         <td>{{ imovel[3] }}</td>
                         <td>{{ imovel[4] }}</td>
                         <td>{{ imovel[5] }}</td>
+                        <td><a class="btn btn-primary"
+                            href="editarimovel?id={{ imovel[0] }}" role="button">editar</a></td>
                     </tr>
                     {% endfor %}
                 </table>
