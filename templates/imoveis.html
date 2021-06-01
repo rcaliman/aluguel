@@ -8,26 +8,26 @@
                 <a class='btn btn-primary' href='editarimovel?id=00'>adicionar novo imovel</a>
                 <table class="table table-striped mt-2">
                     <tr>
-                        <th>tipo</th>
-                        <th>numero</th>
-                        <th>localizacao</th>
-                        <th>locatario</th>
-                        <th>valor</th>
-                        <th>observacao</th>
-                        <th>dia base</th>
-                        <th>acao</th>
+                        <th><a href='imoveis?id=nenhum&acao=tipo'>tipo</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=numero'>numero</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=local'>localizacao</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=cliente'>locatario</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=valor_aluguel'>valor</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=observacao'>observacao</a></th>
+                        <th><a href='imoveis?id=nenhum&acao=dia_base'>dia base</a></th>
+                        <th>&nbsp;</th>
                     </tr>
                     {% for imovel in todos_imoveis %}
                     <tr>
-                        <td>{{ imovel[1] }}</td>
-                        <td>{{ imovel[2] }}</td>
-                        <td>{{ imovel[3] }}</td>
-                        <td>{{ imovel[4] }}</td>
-                        <td>{{ imovel[5] }}</td>
-                        <td>{{ imovel[6] }}</td>
-                        <td>{{ imovel[7] }}</td>
-                        <td><a class="btn btn-primary"
-                            href="editarimovel?id={{ imovel[0] }}" role="button">editar</a></td>
+                        <td class='small'>{{ imovel[1] }}</td>
+                        <td class='small'>{{ imovel[2] }}</td>
+                        <td class='small'>{{ imovel[3] }}</td>
+                        <td class='small'>{{ imovel[4] }}</td>
+                        <td class='small'>{{ imovel[5] }}</td>
+                        <td class='small'>{{ imovel[6] }}</td>
+                        <td class='small'>{{ imovel[7] }}</td>
+                        <td><a class="btn-sm btn-primary"
+                            href="editarimovel?id={{ imovel[0] }}&acao=nenhuma" role="button">editar</a></td>
                     </tr>
                     {% endfor %}
                 </table>

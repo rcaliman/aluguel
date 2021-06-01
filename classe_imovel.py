@@ -67,10 +67,10 @@ class Imovel:
             return cursor.fetchall()
             
     @staticmethod    
-    def busca_todos():
+    def busca_todos(ordenador):
         parametros = parametros_banco.parametros()
         with UsaBanco(parametros) as cursor:
-            _SQL = """select * from al_imoveis;"""
+            _SQL = f"""select * from al_imoveis order by {ordenador};"""
             cursor.execute(_SQL)
             resultado = cursor.fetchall()
         return resultado

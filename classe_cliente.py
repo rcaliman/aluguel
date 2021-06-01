@@ -60,11 +60,11 @@ class Cliente:
             
      
     @staticmethod
-    def busca_todos():
+    def busca_todos(ordenador):
         """busca todos os clientes do banco"""
         parametros = parametros_banco.parametros()
         with UsaBanco(parametros) as cursor:
-            _SQL = """select * from al_clientes order by nome;"""
+            _SQL = f"""select * from al_clientes order by {ordenador};"""
             cursor.execute(_SQL)
             resultado = cursor.fetchall()
         return resultado    

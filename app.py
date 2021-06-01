@@ -2,7 +2,7 @@ from flask import Flask, session, request, render_template, redirect
 from classe_usuario import Usuario
 from classe_cliente import Cliente
 from classe_imovel import Imovel
-import funcoes_diversas as f
+import utilitarios as u
 
 app = Flask(__name__)
 
@@ -10,14 +10,16 @@ app.secret_key = 'segredosecreto'
 
 @app.route('/')
 def inicio():
-    if f.logado():
+    if u.MinhaUrl.logado():
         return render_template('inicio.html')
     else:
         return render_template('login.html')  
+
     
 @app.route('/clientes', methods=['POST','GET'])
 def clientes():
-    if f.logado():
+    url = u.MinhaUrl(request.url)
+    if u.MinhaUrl.logado():          
         if request.form:    #instancia a classe Cliente com os dados do formulario de form_clientes       
             try:
                 cliente = Cliente   (
@@ -43,9 +45,13 @@ def clientes():
                 if request.form['apagar']:
                     cliente.apagar()
             except:
-                cliente.salvar()       
+                cliente.salvar()     
+        try:
+            ordenador = url.acao()
+        except:
+            ordenador = 'nome'
 
-        todos_clientes = Cliente.busca_todos()
+        todos_clientes = Cliente.busca_todos(ordenador)
         
         return render_template  (
                                     'clientes.html',
@@ -53,11 +59,13 @@ def clientes():
                                 ) 
     else:
         return render_template('login.html')
+
     
 @app.route('/editarcliente', methods=['GET'])
 def editarcliente():
-    if f.logado():
-        id_cliente = f.extrai_id_da_url(request.url)
+    if u.MinhaUrl.logado():
+        url = u.MinhaUrl(request.url)
+        id_cliente = url.id()
         
         if id_cliente == '00': # se a id for 00 o sistema vai abrir a tela de adicionar novo
             cliente = '00'
@@ -71,9 +79,11 @@ def editarcliente():
     else:
         return render_template('login.html')
 
+
 @app.route('/imoveis', methods=['POST','GET'])
 def imoveis():
-    if f.logado():
+    url = u.MinhaUrl(request.url)
+    if u.MinhaUrl.logado():
         if request.form:    #instancia a classe Cliente com os dados do formulario de form_clientes       
             try:
                 imovel = Imovel   (
@@ -102,18 +112,26 @@ def imoveis():
                     imovel.apagar()
             except:
                 imovel.salvar() 
-        todos_imoveis = Imovel.busca_todos()
+        try:
+            ordenador = url.acao()
+        except:
+            ordenador = 'cliente'
+
+        todos_imoveis = Imovel.busca_todos(ordenador)
+
         return render_template  (
                                     'imoveis.html',
                                     todos_imoveis = todos_imoveis
                                 )
     else:
         return render_template('login.html')
+
     
 @app.route('/editarimovel', methods=['GET'])
 def editarimovel():
-    if f.logado():
-        id_imovel= f.extrai_id_da_url(request.url)
+    if u.MinhaUrl.logado():
+        url = u.MinhaUrl(request.url)
+        id_imovel= url.id()
         
         if id_imovel== '00': # se a id for 00 o sistema vai abrir a tela de adicionar novo
             imovel = '00'
@@ -127,6 +145,7 @@ def editarimovel():
     else:
         return render_template('login.html')
 
+
 @app.route('/logar', methods=['POST'])
 def logar():
     if Usuario.autenticacao(request.form['usuario'],request.form['senha']):
@@ -135,9 +154,11 @@ def logar():
     else:
         return render_template('login.html')
 
+
 @app.route('/deslogar')
 def deslogar():
     session.pop('usuario', default=None)
     return render_template('login.html')
-    
+
+
 app.run(debug=True)
