@@ -5,29 +5,29 @@
     <div class='container mt-5'>
         <div class='row'>
             <div class='col-12'>
-            <a class='btn btn-primary' href='editarcliente?id=00'>adicionar novo cliente</a>
-                <table class="table table-striped mt-2">
-                    <tr>
-                        <th><a href='clientes?id=nenhum&acao=nome'>nome</a></th>
-                        <th><a href='clientes?id=nenhum&acao=data_nasc'>nascimento</a></th>
-                        <th><a href='clientes?id=nenhum&acao=ci'>identidade</a></th>
-                        <th><a href='clientes?id=nenhum&acao=cpf'>cpf/cnpj</a></th>
-                        <th><a href='clientes?id=nenhum&acao=tel1'>tel. celular</a></th>
-                        <th><a href='clientes?id=nenhum&acao=tel2'>tel. fixo</a></th>
-                        <th>&nbsp;</th>
-                    </tr>
-                    {% for cliente in todos_clientes %}
-                    <tr>
-                        <td class='small'>{{ cliente[1] }}</td>
-                        <td class='small'>{{ cliente[2] }}</td>
-                        <td class='small'>{{ cliente[3] }}</td>
-                        <td class='small'>{{ cliente[4] }}</td>
-                        <td class='small'>{{ cliente[5] }}</td>
-                        <td class='small'>{{ cliente[6] }}</td>
-                        <td><a class="btn-sm btn-primary"
-                            href="editarcliente?id={{ cliente[0] }}&acao=nenhuma" role="button">editar</a></td>
-                    </tr>
-                    {% endfor %}
+                <a class='btn btn-primary' href='editarcliente?id=00'>adicionar novo cliente</a>
+                <table class="table table-striped table-hover mt-2">
+                        <tr>
+                            <th><a href='clientes?id=nenhum&acao=nome'>nome</a></th>
+                            <th><a href='clientes?id=nenhum&acao=data_nasc'>nascimento</a></th>
+                            <th><a href='clientes?id=nenhum&acao=ci'>identidade</a></th>
+                            <th><a href='clientes?id=nenhum&acao=cpf'>cpf/cnpj</a></th>
+                            <th><a href='clientes?id=nenhum&acao=tel1'>tel. celular</a></th>
+                            <th><a href='clientes?id=nenhum&acao=tel2'>tel. fixo</a></th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        {% for cliente in todos_clientes %}
+                        <tr>
+                            <td class='small'>{{ cliente[1] }}</td>
+                            <td class='small'>{{ cliente[2] }}</td>
+                            <td class='small'>{{ cliente[3] }}</td>
+                            <td class='small'>{{ cliente[4] }}</td>
+                            <td class='small'>{{ cliente[5] }}</td>
+                            <td class='small'>{{ cliente[6] }}</td>
+                            <td><a class="btn-sm btn-primary" href="editarcliente?id={{ cliente[0] }}&acao=nenhuma"
+                                    role="button">editar</a></td>
+                        </tr>
+                        {% endfor %}
                 </table>
             </div>
         </div>

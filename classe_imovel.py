@@ -74,4 +74,14 @@ class Imovel:
             cursor.execute(_SQL)
             resultado = cursor.fetchall()
         return resultado
-        
+
+    @staticmethod
+    def busca_por_ids(lista_de_ids):
+        lista_de_ids.append(0)
+        lista_de_ids = tuple(lista_de_ids)
+        parametros = parametros_banco.parametros()
+        with UsaBanco(parametros) as cursor:
+            _SQL = f"""select * from al_imoveis where id in {lista_de_ids};"""                     
+            cursor.execute(_SQL)
+            resultado = cursor.fetchall()
+        return resultado   

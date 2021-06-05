@@ -68,4 +68,12 @@ class Cliente:
             cursor.execute(_SQL)
             resultado = cursor.fetchall()
         return resultado    
-        
+    
+    @staticmethod
+    def seleciona_telefones(nome):
+        parametros = parametros_banco.parametros()
+        with UsaBanco(parametros) as cursor:
+            _SQL = f"""select tel1,tel2 from al_clientes where nome ='{nome}';"""
+            cursor.execute(_SQL)
+            resultado = cursor.fetchall()
+        return resultado

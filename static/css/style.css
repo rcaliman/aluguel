@@ -4,3 +4,8 @@
 .collapsed { background:#fcb0b0; }
 .fonteclara { color: #e7f1fe;}
 table a{text-decoration: none;}
+.table-hover tr:hover{background-color: #ffe9e9;}
+.pointer {cursor: pointer;}
+hr {
+    border-top: 2px dashed #000000;
+  }
