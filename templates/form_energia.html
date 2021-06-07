@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class='container mt-3'>
+    <div class='row justify-content-center'>
+        <div class='col-6 primary'>
+            <form class="row gy-2 gx-3 align-items-center" method='post' action='/energia'>
+                {% if energia == '00' %}
+                <div class="input-group mb-3">
+                    <input type="date" name="data" class="form-control" id="data" required>
+                    <span for="data" class="input-group-text">data</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name='relogio1' class="form-control" id="relogio1" required>
+                    <span for="relogio1" class="input-group-text">relogio1</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name='relogio2' class="form-control" id="relogio2" required>
+                    <span for="relogio2" class="input-group-text">relogio 2</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name='relogio3' class="form-control" id="relogio3" required>
+                    <span for="relogio3" class="input-group-text">relogio 3</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name='valor_kwh' class="form-control" id="valor_kwh">
+                    <span for="valor_kwh" class="input-group-text">valor por kwh</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name='valor_conta' class="form-control" id="valor_conta">
+                    <span for="valor_conta" class="input-group-text">valor da conta</span>
+                </div>
+                <div>
+                    {% else %}
+                    <input type="hidden" value='{{ energia[0][0] }}' name='id' class="form-control" id="id">
+                    <div class="input-group mb-3">
+                        <input type="date" value='{{ energia[0][1] }}' name='data' class="form-control" id="data"
+                            required>
+                        <span for="data" class="input-group-text">data</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" value='{{ energia[0][2] }}' name='relogio1' class="form-control"
+                            id="relogio1" required>
+                        <span for="relogio1" class="input-group-text">relogio 1</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" value='{{ energia[0][3] }}' name='relogio2' class="form-control"
+                            id="relogio2" required>
+                        <span for="relogio 2" class="input-group-text">relogio 2</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" value='{{ energia[0][4] }}' name='relogio3' class="form-control"
+                            id="relogio3" required>
+                        <span for="relogio3" class="input-group-text">relogio 3</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" value='{{ energia[0][5] | replace(".",",")}}' name='valor_kwh'
+                            class="form-control" id="valor_kwh">
+                        <span for="valor_kwh" class="input-group-text">valor por kwh</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" value='{{ energia[0][6] | replace(".",",")}}' name='valor_conta'
+                            class="form-control" id="valor_conta">
+                        <span for="valor_conta" class="input-group-text">valor da conta</span>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <button type="submit" class="btn btn-primary">
+                            salvar
+                        </button>
+                    </div>
+                    {% if energia != '00' %}
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    <im class='fonteclara'>apagar</im>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body fonteclara">
+                                    <button type='submit' class='btn-xs btn-danger' name='apagar' value='True'>
+                                        apagar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+<footer class='mt-5'></footer>
+{% endblock %}

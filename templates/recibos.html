@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+{% for dado in dados_recibos %}
+<p style="page-break-before: always">&nbsp;</p>
+<div class="folha">
+    <center>
+        <p>
+        <h1 class='pointer' onclick="javascript:location.href='/imoveis'">RECIBO</h1>
+    </center>
+    <h3 class='mt-5'>Recebi de {{dado[4]}} a importancia de <u> {{ extenso(dado[5]) }}</u>
+        **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**.
+        <p>Referente ao aluguel do(a) {{dado[1]}} numero {{dado[2]}}
+        <p align=right class='mt-3'>Colatina(ES), {{dado[7]}} de {{mes}} de {{ano}}
+    </h3>
+    <center>
+        <p class='mt-5'>__________________________________________________________<br><i>Darci Francisco
+                Caliman<br>Proprietario</p></i>
+    </center>
+    <p>
+    <div align=right>{% for a in telefones(dado[4])[0] %}
+        {{a}}&nbsp;&nbsp;
+        {% endfor %}&nbsp;&nbsp;</div>
+    <p>&nbsp;
+    <p>
+        {% if len(str(dado)) <= 80 %} <hr class='mt-5'>
+            {% elif len(str(dado)) > 80 <= 90 %} <hr class='mt-4'>
+                {% elif len(str(dado)) > 90 <= 100 %} <hr class='mt-3'>
+                    {% elif len(str(dado)) > 100 <= 110 %} <hr class='mt-2'>
+                        {% else %}
+                        <hr class='mt-1'>
+                        {% endif %}
+                        <center>
+                            <h1 class='pointer mt-5' onclick="javascript:location.href='/imoveis'">RECIBO</h1>
+                        </center>
+                        <h3 class='mt-5'>Recebi de {{dado[4]}} a importancia de <u> {{ extenso(dado[5]) }}</u>
+                            **-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**-**.
+                            <p>Referente ao aluguel do(a) {{dado[1]}} numero {{dado[2]}}
+                            <p align=right class='mt-3'>Colatina(ES), {{dado[7]}} de {{mes}} de {{ano}}
+                        </h3>
+                        <center>
+                            <p class='mt-5'>__________________________________________________________<br><i>Darci
+                                    Francisco
+                                    Caliman<br>Proprietario</p></i>
+                        </center>
+                        <p>
+                        <div align=right>{% for a in telefones(dado[4])[0] %}
+                            {{a}}&nbsp;&nbsp;
+                            {% endfor %}&nbsp;&nbsp;</div>
+</div>
+
+</html>
+{% endfor %}
+{% endblock %}
