@@ -4,6 +4,8 @@
 .collapsed { background:#fcb0b0; }
 .fonteclara { color: #e7f1fe;}
 .small {font-size: 0.75rem}
+nav .navbar-nav li a{color: white !important;}
+.navbar-brand {font-weight: bolder;}
 table a{text-decoration: none;}
 .table-hover tr:hover{background-color: #ffe9e9;}
 .pointer {cursor: pointer;}
