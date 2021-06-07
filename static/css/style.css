@@ -3,9 +3,12 @@
 .collapse { background:#fcb0b0; }
 .collapsed { background:#fcb0b0; }
 .fonteclara { color: #e7f1fe;}
+.small {font-size: 0.75rem}
 table a{text-decoration: none;}
 .table-hover tr:hover{background-color: #ffe9e9;}
 .pointer {cursor: pointer;}
 hr {
     border-top: 2px dashed #000000;
   }
+.energia td {text-align:end;}
+th {text-align:center;}

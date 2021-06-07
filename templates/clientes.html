@@ -2,7 +2,7 @@
 
 {% block body %}
 <section>
-    <div class='container mt-5'>
+    <div class='container mt-3'>
         <div class='row'>
             <div class='col-12'>
                 <a class='btn btn-primary' href='editarcliente?id=00'>adicionar novo cliente</a>
@@ -19,7 +19,11 @@
                         {% for cliente in todos_clientes %}
                         <tr>
                             <td class='small'>{{ cliente[1] }}</td>
-                            <td class='small'>{{ cliente[2] }}</td>
+                            {% if cliente[2] != None %}
+                                <td class='small'>{{ cliente[2].strftime('%d/%m/%Y') }}</td>
+                            {% else %}
+                                <td class='small'></td>
+                            {% endif %}
                             <td class='small'>{{ cliente[3] }}</td>
                             <td class='small'>{{ cliente[4] }}</td>
                             <td class='small'>{{ cliente[5] }}</td>

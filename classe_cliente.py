@@ -30,6 +30,8 @@ class Cliente:
         """insere um novo cliente"""
         parametros = parametros_banco.parametros()
         with UsaBanco(parametros) as cursor:
+            if not self.data_nasc:
+                self.data_nasc = '0000-00-00'
             _SQL = f"""insert into al_clientes(nome, data_nasc, ci, cpf, tel1, tel2) values (
                 '{self.nome}','{self.data_nasc}','{self.ci}','{self.cpf}','{self.tel1}','{self.tel2}');"""
             cursor.execute(_SQL) 
@@ -77,3 +79,13 @@ class Cliente:
             cursor.execute(_SQL)
             resultado = cursor.fetchall()
         return resultado
+    
+    @staticmethod
+    def input_select_clientes():
+        parametros = parametros_banco.parametros()
+        with UsaBanco(parametros) as cursor:
+            _SQL = "select nome from al_clientes order by nome;"
+            cursor.execute(_SQL)
+            resultado = cursor.fetchall()
+        return resultado
+        

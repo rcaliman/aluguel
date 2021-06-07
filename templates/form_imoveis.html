@@ -2,69 +2,94 @@
 
 {% block body %}
 
-<div class='container mt-5'>
+<div class='container mt-3'>
     <div class='row justify-content-center'>
         <div class='col-6 primary'>
             <form class="row gy-2 gx-3 align-items-center" method='post' action='/imoveis'>
                 {% if imovel == '00' %}
-                <div class="mb-3">
-                    <label for="tipo" class="form-label">tipo:</label>
-                    <input type="text" name='tipo' class="form-control" id="tipo">
+                <div class="input-group mb-3">
+                    <select class='form-select' name=tipo id=tipo>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Conforme Combinado.">Conforme Combinado</option>
+                        <option value="Energia da Placa">Energia da Placa</option>
+                        <option value="Kitnet">Kitnet</option>
+                        <option value="Loja">Loja</option>
+                        <option value="Sala Comercial">Sala Comercial</option>
+                    </select>
+                    <span for="tipo" class="input-group-text">tipo</span>
                 </div>
-                <div class="mb-3">
-                    <label for="numero" class="form-label">numero:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='numero' class="form-control" id="numero">
+                    <span for="numero" class="input-group-text">numero</span>
                 </div>
-                <div class="mb-3">
-                    <label for="localizacao" class="form-label">localizacao:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='localizacao' class="form-control" id="localizacao">
+                    <span for="localizacao" class="input-group-text">localizacao</span>
                 </div>
-                <div class="mb-3">
-                    <label for="nome" class="form-label">nome:</label>
-                    <input type="text" name='nome' class="form-control" id="nome">
+                <div class="input-group mb-3">
+                    <select name='nome' id='nome' class="form-select">
+                        {% for nome in input_select_clientes %}
+                        <option value="{{nome[0]}}">{{nome[0]}}</option>
+                        {% endfor %}">
+                    </select>
+                    <span for="nome" class="input-group-text">nome</span>
                 </div>
-                <div class="mb-3">
-                    <label for="valor" class="form-label">valor:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='valor' class="form-control" id="valor">
+                    <span for="valor" class="input-group-text">valor</span>
                 </div>
-                <div class="mb-3">
-                    <label for="observacao" class="form-label">observacao:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='observacao' class="form-control" id="observacao">
+                    <span for="observacao" class="input-group-text">observacao</span>
                 </div>
-                <div class="mb-3">
-                    <label for="dia_base" class="form-label">dia base:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='dia_base' class="form-control" id="dia_base">
+                    <span for="dia_base" class="input-group-text">dia base</span>
                 </div>
                 {% else %}
-                <div class="mb-3">
-                    <input type="hidden" value='{{ imovel[0][0] }}' name='id' class="form-control" id="id">
-                    <label for="tipo" class="form-label">tipo:</label>
-                    <input type="text" name='tipo' value='{{ imovel[0][1]}}' class="form-control" id="tipo">
+                <input type="hidden" value='{{ imovel[0][0] }}' name='id' class="form-control" id="id">
+                <div class="input-group mb-3">
+                    <select class='form-select' name='tipo' id='tipo'>
+                        <option value='{{ imovel[0][1]}}'>{{ imovel[0][1]}}</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Conforme Combinado.">Conforme Combinado</option>
+                        <option value="Energia da Placa">Energia da Placa</option>
+                        <option value="Kitnet">Kitnet</option>
+                        <option value="Loja">Loja</option>
+                        <option value="Sala Comercial">Sala Comercial</option>
+                    </select>
+                    <span for="tipo" class="input-group-text">tipo</span>
                 </div>
-                <div class="mb-3">
-                    <label for="numero" class="form-label">numero:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='numero' value='{{ imovel[0][2]}}' class="form-control" id="numero">
+                    <span for="numero" class="input-group-text">numero</span>
                 </div>
-                <div class="mb-3">
-                    <label for="localizacao" class="form-label">localizacao:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='localizacao' class="form-control" value='{{ imovel[0][3]}}'
                         id="localizacao">
+                    <span for="localizacao" class="input-group-text">localizacao</span>
                 </div>
-                <div class="mb-3">
-                    <label for="nome" class="form-label">nome:</label>
-                    <input type="text" name='nome' class="form-control" value='{{ imovel[0][4]}}' id="nome">
+                <div class="input-group mb-3">
+                    <select name='nome' class="form-select" value='{{ imovel[0][4]}}' id="nome">
+                        <option value="{{imovel[0][4]}}">{{imovel[0][4]}}</option>
+                        {% for nome in input_select_clientes %}
+                        <option value="{{nome[0]}}">{{nome[0]}}</option>
+                        {% endfor %}">
+                    </select>
+                    <span for="nome" class="input-group-text">nome</span>
                 </div>
-                <div class="mb-3">
-                    <label for="valor" class="form-label">valor:</label>
-                    <input type="text" name='valor' class="form-control" value='{{ imovel[0][5]}}' id="valor">
+                <div class="input-group mb-3">
+                    <input type="text" name='valor' class="form-control" value='{{ imovel[0][5] | replace(".",",")}}'
+                        id="valor">
+                        <span for="valor" class="input-group-text">valor</span>
                 </div>
-                <div class="mb-3">
-                    <label for="observacao" class="form-label">observacao:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='observacao' class="form-control" value='{{ imovel[0][6]}}' id="nome">
+                    <span for="observacao" class="input-group-text">observacao</span>
                 </div>
-                <div class="mb-3">
-                    <label for="dia_base" class="form-label">dia base:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='dia_base' class="form-control" value='{{ imovel[0][7]}}' id="valor">
+                    <span for="dia_base" class="input-group-text">dia base</span>
                 </div>
                 {% endif %}
                 <div>

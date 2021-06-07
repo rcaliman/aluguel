@@ -2,7 +2,7 @@
 
 {% block body %}
 <section>
-    <div class='container mt-5'>
+    <div class='container mt-3'>
         <div class='row'>
             <div class='col-12'>
                 <a class='btn btn-primary' href='editarimovel?id=00'>adicionar novo imovel</a>
@@ -25,7 +25,7 @@
                             <td class='small'>{{ imovel[2] }}</td>
                             <td class='small'>{{ imovel[3] }}</td>
                             <td class='small'>{{ imovel[4] }}</td>
-                            <td class='small'>{{ imovel[5] }}</td>
+                            <td class='small'>{{ imovel[5] | replace(".",",") }}</td>
                             <td class='small'>{{ imovel[6] }}</td>
                             <td class='small'>{{ imovel[7] }}</td>
                             <td><input class="form-check-input" type="checkbox" value="{{ imovel[0] }}"
@@ -35,9 +35,25 @@
                         </tr>
                         {% endfor %}
                     </table>
-                    {{ input_mes | safe }}
-                    {{ input_ano | safe }}
-                    <button class='btn btn-primary'>imprimir recibos</button>
+                    <div class='row'>
+                        <div class='col'>
+                            <div class='input-group'>
+                                {{ input_mes | safe }}
+                                <span class="input-group-text">mes</span>
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <div class='input-group'>
+                                {{ input_ano | safe }}
+                                <span class="input-group-text">ano</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row mt-3'>
+                        <div class='col'>
+                            <button class='btn btn-primary'>imprimir recibos</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

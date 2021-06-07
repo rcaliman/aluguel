@@ -94,7 +94,7 @@ def imoveis():
                                         request.form['numero'],
                                         request.form['localizacao'],
                                         request.form['nome'],
-                                        request.form['valor'],
+                                        u.virgula_para_ponto(request.form['valor']),
                                         request.form['observacao'],
                                         request.form['dia_base'],
                                     )
@@ -105,7 +105,7 @@ def imoveis():
                                         request.form['numero'],
                                         request.form['localizacao'],
                                         request.form['nome'],
-                                        request.form['valor'],
+                                        u.virgula_para_ponto(request.form['valor']),
                                         request.form['observacao'],
                                         request.form['dia_base'],
                                     )
@@ -143,7 +143,8 @@ def editarimovel():
             
         return render_template  (
                                     'form_imoveis.html',
-                                    imovel = imovel
+                                    imovel = imovel,
+                                    input_select_clientes = Cliente.input_select_clientes(),
                                 )
     else:
         return render_template('login.html')
@@ -180,8 +181,8 @@ def energia():
                                         request.form['relogio1'],
                                         request.form['relogio2'],
                                         request.form['relogio3'],
-                                        request.form['valor_kwh'],
-                                        request.form['valor_conta'],
+                                        u.virgula_para_ponto(request.form['valor_kwh']),
+                                        u.virgula_para_ponto(request.form['valor_conta']),
                                     )
             except:
                 energia = Energia  (
@@ -190,8 +191,8 @@ def energia():
                                         request.form['relogio1'],
                                         request.form['relogio2'],
                                         request.form['relogio3'],
-                                        request.form['valor_kwh'],
-                                        request.form['valor_conta'],
+                                        u.virgula_para_ponto(request.form['valor_kwh']),
+                                        u.virgula_para_ponto(request.form['valor_conta']),
                                     )
             try:  
                 if request.form['apagar']:
@@ -200,18 +201,40 @@ def energia():
                 energia.salvar() 
         
         busca_contas = u.busca_contas()
-        mes1ktn1 = round(busca_contas[1][7] / busca_contas[1][10] * float(busca_contas[1][6]),2)
-        mes1ktn2 = round(busca_contas[1][8] / busca_contas[1][10] * float(busca_contas[1][6]),2)
-        mes1ktn3 = round(busca_contas[1][9] / busca_contas[1][10] * float(busca_contas[1][6]),2)
-
-        mes2ktn1 = round(busca_contas[2][7] / busca_contas[2][10] * float(busca_contas[2][6]),2)
-        mes2ktn2 = round(busca_contas[2][8] / busca_contas[2][10] * float(busca_contas[2][6]),2)
-        mes2ktn3 = round(busca_contas[2][9] / busca_contas[2][10] * float(busca_contas[2][6]),2)
-
-        mes3ktn1 = round(busca_contas[3][7] / busca_contas[3][10] * float(busca_contas[3][6]),2)
-        mes3ktn2 = round(busca_contas[3][8] / busca_contas[3][10] * float(busca_contas[3][6]),2)
-        mes3ktn3 = round(busca_contas[3][9] / busca_contas[3][10] * float(busca_contas[3][6]),2)
-
+        
+        if busca_contas[1][6] > 0:
+            mes1total = busca_contas[1][6]
+            mes1ktn1 = u.ponto_para_virgula(busca_contas[1][7] / busca_contas[1][10] * float(busca_contas[1][6]))
+            mes1ktn2 = u.ponto_para_virgula(busca_contas[1][8] / busca_contas[1][10] * float(busca_contas[1][6]))
+            mes1ktn3 = u.ponto_para_virgula(busca_contas[1][9] / busca_contas[1][10] * float(busca_contas[1][6]))
+            mes1total = u.ponto_para_virgula(mes1total)
+        else:
+            mes1total = mes1ktn1 = mes1ktn2 = mes1ktn3 = 0
+            
+        mes1kwh = str(busca_contas[1][5]).replace('.',',')
+        
+        if busca_contas[2][6] > 0:
+            mes2total = busca_contas[2][6]
+            mes2ktn1 = u.ponto_para_virgula(busca_contas[2][7] / busca_contas[2][10] * float(busca_contas[2][6]))
+            mes2ktn2 = u.ponto_para_virgula(busca_contas[2][8] / busca_contas[2][10] * float(busca_contas[2][6]))
+            mes2ktn3 = u.ponto_para_virgula(busca_contas[2][9] / busca_contas[2][10] * float(busca_contas[2][6]))
+            mes2total = u.ponto_para_virgula(mes2total)
+        else:
+            mes2total = mes2ktn1 = mes2ktn2 = mes2ktn3 = 0    
+        
+        mes2kwh = str(busca_contas[2][5]).replace('.',',')
+        
+        if busca_contas[3][6] > 0:
+            mes3total = busca_contas[3][6]
+            mes3ktn1 = u.ponto_para_virgula(busca_contas[3][7] / busca_contas[3][10] * float(busca_contas[3][6]))
+            mes3ktn2 = u.ponto_para_virgula(busca_contas[3][8] / busca_contas[3][10] * float(busca_contas[3][6]))
+            mes3ktn3 = u.ponto_para_virgula(busca_contas[3][9] / busca_contas[3][10] * float(busca_contas[3][6]))
+            mes3total = u.ponto_para_virgula(mes3total)
+        else:
+            mes3total = mes3ktn1 = mes3ktn2 = mes3ktn3 = 0    
+        
+        mes3kwh = str(busca_contas[3][5]).replace('.',',')
+        
         return render_template('energia.html',
                                     busca_contas = busca_contas,
                                     mes1ktn1 = mes1ktn1,
@@ -223,6 +246,15 @@ def energia():
                                     mes3ktn1 = mes3ktn1,
                                     mes3ktn2 = mes3ktn2,
                                     mes3ktn3 = mes3ktn3,
+                                    mes1total = mes1total,
+                                    mes2total = mes2total,
+                                    mes3total = mes3total,
+                                    mes1kwh = mes1kwh,
+                                    mes2kwh = mes2kwh,
+                                    mes3kwh = mes3kwh,
+                                    data1 = u.data_brasil(busca_contas[1][1]),
+                                    data2 = u.data_brasil(busca_contas[2][1]),
+                                    data3 = u.data_brasil(busca_contas[3][1])
                                 )
     else:
         return render_template('login.html') 

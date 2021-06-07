@@ -1,90 +1,119 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class='container mt-5'>
+<div class='container mt-3'>
     <div class='row justify-content-center'>
         <div class='col-6 primary'>
             <form class="row gy-2 gx-3 align-items-center" method='post' action='/clientes'>
                 {% if cliente == '00' %}
-                <div class="mb-3">
-                    <label for="nome" class="form-label">nome:</label>
-                    <input type="text" name='nome' class="form-control" id="nome">
+                <div class="input-group mb-3">
+                    <input type="text" name='nome' class="form-control" id="nome" required>
+                    <span class="input-group-text">nome</span>
                 </div>
-                <div class="mb-3">
-                    <label for="nascimento" class="form-label">nascimento:</label>
-                    <input type="text" name='data_nasc' class="form-control" id="nascimento">
+                <div class="input-group mb-3">
+                    <input type="date" name='data_nasc' class="form-control" id="nascimento">
+                    <span class="input-group-text">nascimento</span>
                 </div>
-                <div class="mb-3">
-                    <label for="ci" class="form-label">identidade:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='ci' class="form-control" id="ci">
+                    <span class="input-group-text">identidade</span>
                 </div>
-                <div class="mb-3">
-                    <label for="cpf" class="form-label">cpf:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='cpf' class="form-control" id="cpf">
+                    <span class="input-group-text">
+                        &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('000.000.000-00')"
+                            type="radio">&nbsp;cpf&nbsp;
+                        &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('00.000.000/0000-00')"
+                            type="radio">&nbsp;cnpj&nbsp;
+                    </span>
                 </div>
-                <div class="mb-3">
-                    <label for="tel1" class="form-label">celular:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='tel1' class="form-control" id="tel1">
+                    <span class="input-group-text">
+                        &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 00000-0000')"
+                            type="radio">&nbsp;celular&nbsp;
+                        &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 0000-0000')"
+                            type="radio">&nbsp;fixo&nbsp;
+                    </span>
                 </div>
-                <div class="mb-3">
-                    <label for="tel2" class="form-label">fixo:</label>
+                <div class="input-group mb-3">
                     <input type="text" name='tel2' class="form-control" id="tel2">
+                    <span class="input-group-text">
+                        &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 00000-0000')"
+                            type="radio">&nbsp;celular&nbsp;
+                        &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 0000-0000')"
+                            type="radio">&nbsp;fixo&nbsp;
+                    </span>
                 </div>
+                {% else %}
+                <input type="hidden" value='{{ cliente[0][0] }}' name='id' class="form-control" id="id">
+                <div class="input-group mb-3">
+                    <input type="text" value='{{ cliente[0][1] }}' name='nome' class="form-control" id="nome" required>
+                    <span class="input-group-text" required>nome</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="date" value='{{ cliente[0][2] }}' name='data_nasc' class="form-control"
+                        id="nascimento">
+                    <span class="input-group-text">nascimento</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" value='{{ cliente[0][3] }}' name='ci' class="form-control" id="ci">
+                    <span class="input-group-text">identidade</span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" value='{{ cliente[0][4] }}' name='cpf' class="form-control" id="cpf">
+                    <span class="input-group-text">
+                        &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('000.000.000-00')"
+                            type="radio">&nbsp;cpf&nbsp;
+                        &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('00.000.000/0000-00')"
+                            type="radio">&nbsp;cnpj&nbsp;
+                    </span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" value='{{ cliente[0][5] }}' name='tel1' class="form-control" id="tel1">
+                    <span class="input-group-text">
+                        &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 00000-0000')"
+                            type="radio">&nbsp;celular&nbsp;
+                        &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 0000-0000')"
+                            type="radio">&nbsp;fixo&nbsp;
+                    </span>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" value='{{ cliente[0][6] }}' name='tel2' class="form-control" id="tel2">
+                    <span class="input-group-text">
+                        &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 00000-0000')"
+                            type="radio">&nbsp;celular&nbsp;
+                        &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 0000-0000')"
+                            type="radio">&nbsp;fixo&nbsp;
+                    </span>
+                </div>
+                {% endif %}
                 <div>
-                    {% else %}
-                    <div class="mb-3">
-                        <input type="hidden" value='{{ cliente[0][0] }}' name='id' class="form-control" id="id">
-                        <label for="nome" class="form-label">nome:</label>
-                        <input type="text" value='{{ cliente[0][1] }}' name='nome' class="form-control" id="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="nascimento" class="form-label">nascimento:</label>
-                        <input type="text" value='{{ cliente[0][2] }}' name='data_nasc' class="form-control"
-                            id="nascimento">
-                    </div>
-                    <div class="mb-3">
-                        <label for="ci" class="form-label">identidade:</label>
-                        <input type="text" value='{{ cliente[0][2] }}' name='ci' class="form-control" id="ci">
-                    </div>
-                    <div class="mb-3">
-                        <label for="cpf" class="form-label">cpf:</label>
-                        <input type="text" value='{{ cliente[0][4] }}' name='cpf' class="form-control" id="cpf">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tel1" class="form-label">celular:</label>
-                        <input type="text" value='{{ cliente[0][5] }}' name='tel1' class="form-control" id="tel1">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tel2" class="form-label">fixo:</label>
-                        <input type="text" value='{{ cliente[0][6] }}' name='tel2' class="form-control" id="tel2">
-                    </div>
-                    {% endif %}
-                    <div>
-                        <button type="submit" class="btn btn-primary">
-                            salvar
-                        </button>
-                    </div>
-                    {% if cliente != '00' %}
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                    <im class='fonteclara'>apagar</im>
+                    <button type="submit" class="btn btn-primary">
+                        salvar
+                    </button>
+                </div>
+                {% if cliente != '00' %}
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                <im class='fonteclara'>apagar</im>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body fonteclara">
+                                <button type='submit' class='btn-xs btn-danger' name='apagar' value='True'>
+                                    apagar
                                 </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body fonteclara">
-                                    <button type='submit' class='btn-xs btn-danger' name='apagar' value='True'>
-                                        apagar
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    {% endif %}
+                </div>
+                {% endif %}
             </form>
         </div>
     </div>
