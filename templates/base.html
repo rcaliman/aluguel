@@ -21,14 +21,26 @@
             <ul class="navbar-nav">
                 <a class="navbar-brand" href="/">&lt;ALUGUEL&gt;</a>
                 {% if session['usuario'] %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="clientes">clientes</a>
+                    <li class="nav-item"> 
+                        {% if 'cliente' in url_for(request.endpoint) %}
+                            <a class="nav-link active" href="clientes">clientes</a>
+                        {% else %}
+                            <a class="nav-link" href="clientes">clientes</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="imoveis">imoveis</a>
+                        {% if 'imove' in url_for(request.endpoint) %}
+                            <a class="nav-link active" href="imoveis">imoveis</a>
+                        {% else %}
+                            <a class="nav-link" href="imoveis">imoveis</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="energia">energia</a>
+                        {% if 'energia' in url_for(request.endpoint) %}
+                            <a class="nav-link active" href="energia">energia</a>
+                        {% else %}
+                            <a class="nav-link" href="energia">energia</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="deslogar">logout</a>
