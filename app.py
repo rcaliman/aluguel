@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, session, request, render_template, redirect
 from classe_usuario import Usuario
 from classe_cliente import Cliente
@@ -293,4 +294,4 @@ def deslogar():
     return render_template('login.html')
 
 
-app.run(debug=True)
+app.run(host='0.0.0.0', port=8080, debug='True')
