@@ -24,15 +24,15 @@
                             <td class='small'>{{ imovel[1] }}</td>
                             <td class='small'>{{ imovel[2] }}</td>
                             <td class='small'>{{ imovel[3] }}</td>
-                            <td class='small'>{{ imovel[4] }}</td>
+                            <td class='small'><label for="imovel{{ imovel[0] }}">{{ imovel[4] }}</label></td>
                             <td class='small'>{{ imovel[5] | replace(".",",") }}</td>
                             <td class='small'>{{ imovel[6] }}</td>
                             <td class='small'>{{ imovel[7] }}</td>
                             <td><input class="form-check-input" type="checkbox" value="{{ imovel[0] }}"
-                                    name="imovel{{ imovel[0] }}"></td>
+                                    name="imovel{{ imovel[0] }}" id="imovel{{ imovel[0] }}"></td>
                             <td><a class="btn-sm btn-primary" href="editarimovel?id={{ imovel[0] }}&acao=nenhuma"
                                     role="button">editar</a></td>
-                        </tr>
+                            </tr>
                         {% endfor %}
                     </table>
                     <div class='row'>

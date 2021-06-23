@@ -294,4 +294,4 @@ def deslogar():
     return render_template('login.html')
 
 
-app.run(host='0.0.0.0', port=5001, debug='True')
+app.run(host='0.0.0.0', port=5001)

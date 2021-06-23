@@ -11,3 +11,6 @@ hr {
   }
 .energia td {text-align:end;}
 th {text-align:center;}
+label{
+        cursor: pointer;
+}
