@@ -42,6 +42,9 @@ label{
   padding-left: 1em;
   text-shadow: 3px 3px 3px #333333;
 }
+.collapse{
+  background-color: #1a76fb;
+}
 .login{
   background: #1a76fb;
   box-shadow: 5px 5px 5px #666666;
