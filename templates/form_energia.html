@@ -11,23 +11,23 @@
                     <span for="data" class="input-group-text">data</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='relogio1' class="form-control" id="relogio1" required>
+                    <input type="number" name='relogio1' class="form-control" id="relogio1" required>
                     <span for="relogio1" class="input-group-text">relogio1</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='relogio2' class="form-control" id="relogio2" required>
+                    <input type="number" name='relogio2' class="form-control" id="relogio2" required>
                     <span for="relogio2" class="input-group-text">relogio 2</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='relogio3' class="form-control" id="relogio3" required>
+                    <input type="number" name='relogio3' class="form-control" id="relogio3" required>
                     <span for="relogio3" class="input-group-text">relogio 3</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='valor_kwh' class="form-control" id="valor_kwh">
+                    <input type="number" name='valor_kwh' class="form-control" id="valor_kwh">
                     <span for="valor_kwh" class="input-group-text">valor por kwh</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='valor_conta' class="form-control" id="valor_conta">
+                    <input type="number" name='valor_conta' class="form-control" id="valor_conta">
                     <span for="valor_conta" class="input-group-text">valor da conta</span>
                 </div>
                 <div>
@@ -39,27 +39,27 @@
                         <span for="data" class="input-group-text">data</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" value='{{ energia[0][2] }}' name='relogio1' class="form-control"
+                        <input type="number" value='{{ energia[0][2] }}' name='relogio1' class="form-control"
                             id="relogio1" required>
                         <span for="relogio1" class="input-group-text">relogio 1</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" value='{{ energia[0][3] }}' name='relogio2' class="form-control"
+                        <input type="number" value='{{ energia[0][3] }}' name='relogio2' class="form-control"
                             id="relogio2" required>
                         <span for="relogio 2" class="input-group-text">relogio 2</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" value='{{ energia[0][4] }}' name='relogio3' class="form-control"
+                        <input type="number" value='{{ energia[0][4] }}' name='relogio3' class="form-control"
                             id="relogio3" required>
                         <span for="relogio3" class="input-group-text">relogio 3</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" value='{{ energia[0][5] | replace(".",",")}}' name='valor_kwh'
+                        <input type="number" value='{{ energia[0][5] | replace(".",",")}}' name='valor_kwh'
                             class="form-control" id="valor_kwh">
                         <span for="valor_kwh" class="input-group-text">valor por kwh</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" value='{{ energia[0][6] | replace(".",",")}}' name='valor_conta'
+                        <input type="number" value='{{ energia[0][6] | replace(".",",")}}' name='valor_conta'
                             class="form-control" id="valor_conta">
                         <span for="valor_conta" class="input-group-text">valor da conta</span>
                     </div>

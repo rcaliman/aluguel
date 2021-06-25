@@ -19,7 +19,7 @@
                     <span class="input-group-text">identidade</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='cpf' class="form-control" id="cpf">
+                    <input type="number" name='cpf' class="form-control" id="cpf">
                     <span class="input-group-text">
                         &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('000.000.000-00')"
                             type="radio">&nbsp;cpf&nbsp;
@@ -28,7 +28,7 @@
                     </span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='tel1' class="form-control" id="tel1">
+                    <input type="tel" name='tel1' class="form-control" id="tel1">
                     <span class="input-group-text">
                         &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 00000-0000')"
                             type="radio">&nbsp;celular&nbsp;
@@ -37,7 +37,7 @@
                     </span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='tel2' class="form-control" id="tel2">
+                    <input type="tel" name='tel2' class="form-control" id="tel2">
                     <span class="input-group-text">
                         &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 00000-0000')"
                             type="radio">&nbsp;celular&nbsp;
@@ -61,7 +61,7 @@
                     <span class="input-group-text">identidade</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" value='{{ cliente[0][4] }}' name='cpf' class="form-control" id="cpf">
+                    <input type="number" value='{{ cliente[0][4] }}' name='cpf' class="form-control" id="cpf">
                     <span class="input-group-text">
                         &nbsp;<input name='cpfcnpj' onclick="$('#cpf').mask('000.000.000-00')"
                             type="radio">&nbsp;cpf&nbsp;
@@ -70,7 +70,7 @@
                     </span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" value='{{ cliente[0][5] }}' name='tel1' class="form-control" id="tel1">
+                    <input type="tel" value='{{ cliente[0][5] }}' name='tel1' class="form-control" id="tel1">
                     <span class="input-group-text">
                         &nbsp;<input name='tel1tipo' onclick="$('#tel1').mask('(00) 00000-0000')"
                             type="radio">&nbsp;celular&nbsp;
@@ -79,7 +79,7 @@
                     </span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" value='{{ cliente[0][6] }}' name='tel2' class="form-control" id="tel2">
+                    <input type="tel" value='{{ cliente[0][6] }}' name='tel2' class="form-control" id="tel2">
                     <span class="input-group-text">
                         &nbsp;<input name='tel2tipo' onclick="$('#tel2').mask('(00) 00000-0000')"
                             type="radio">&nbsp;celular&nbsp;

@@ -19,7 +19,7 @@
                     <span for="tipo" class="input-group-text">tipo</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='numero' class="form-control" id="numero">
+                    <input type="number" name='numero' class="form-control" id="numero">
                     <span for="numero" class="input-group-text">numero</span>
                 </div>
                 <div class="input-group mb-3">
@@ -35,7 +35,7 @@
                     <span for="nome" class="input-group-text">nome</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='valor' class="form-control" id="valor">
+                    <input type="number" name='valor' class="form-control" id="valor">
                     <span for="valor" class="input-group-text">valor</span>
                 </div>
                 <div class="input-group mb-3">
@@ -43,7 +43,7 @@
                     <span for="observacao" class="input-group-text">observacao</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='dia_base' class="form-control" id="dia_base">
+                    <input type="number" name='dia_base' class="form-control" id="dia_base">
                     <span for="dia_base" class="input-group-text">dia base</span>
                 </div>
                 {% else %}
@@ -61,7 +61,7 @@
                     <span for="tipo" class="input-group-text">tipo</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='numero' value='{{ imovel[0][2]}}' class="form-control" id="numero">
+                    <input type="number" name='numero' value='{{ imovel[0][2]}}' class="form-control" id="numero">
                     <span for="numero" class="input-group-text">numero</span>
                 </div>
                 <div class="input-group mb-3">
@@ -79,7 +79,7 @@
                     <span for="nome" class="input-group-text">nome</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='valor' class="form-control" value='{{ imovel[0][5] | replace(".",",")}}'
+                    <input type="number" name='valor' class="form-control" value='{{ imovel[0][5] | replace(".",",")}}'
                         id="valor">
                         <span for="valor" class="input-group-text">valor</span>
                 </div>
@@ -88,7 +88,7 @@
                     <span for="observacao" class="input-group-text">observacao</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name='dia_base' class="form-control" value='{{ imovel[0][7]}}' id="valor">
+                    <input type="number" name='dia_base' class="form-control" value='{{ imovel[0][7]}}' id="valor">
                     <span for="dia_base" class="input-group-text">dia base</span>
                 </div>
                 {% endif %}
