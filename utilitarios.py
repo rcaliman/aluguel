@@ -26,7 +26,7 @@ class MinhaUrl:
 def input_ano():
     data = datetime.datetime.now()
     ano = data.year
-    input = f""" <select name='ano' class="form-select" aria-label="Default select example">
+    input = f""" <select name='ano' class="form-select">
                     <option value="{ano-1}">{ano-1}</option>
                     <option selected value="{ano}">{ano}</option>
                     <option value="{ano+1}">{ano+1}</option>

@@ -2,10 +2,10 @@
 
 {% block body %}
 
-<div class='container mt-3'>
+<div class='container mt-3 conteudo-pagina'>
     <div class='row justify-content-center'>
         <div class='col-6 primary'>
-            <form class="row gy-2 gx-3 align-items-center" method='post' action='/imoveis'>
+            <form class="row gy-2 gx-3 align-items-center formulario" method='post' action='/imoveis'>
                 {% if imovel == '00' %}
                 <div class="input-group mb-3">
                     <select class='form-select' name=tipo id=tipo>
@@ -93,8 +93,8 @@
                 </div>
                 {% endif %}
                 <div>
-                    <button type="submit" class="btn btn-primary">
-                        salvar
+                    <button type="submit" class="btn btn-primary botao-grande">
+                        ✔ salvar
                     </button>
                 </div>
                 {% if imovel != '00' %}
@@ -110,8 +110,8 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse"
                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body fonteclara">
-                                <button type='submit' class='btn-xs btn-danger' name='apagar' value='True'>
-                                    apagar
+                                <button type='submit' class='btn-xs btn-danger botao-apagar' name='apagar' value='True'>
+                                    ✗ apagar
                                 </button>
                             </div>
                         </div>
@@ -122,5 +122,5 @@
         </div>
     </div>
 </div>
-<footer class='mt-5'></footer>
+{% include('rodape.html') %}
 {% endblock %}

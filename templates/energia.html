@@ -2,21 +2,21 @@
 
 {% block body %}
 <section>
-    <div class='container mt-3'>
+    <div class='container mt-3 conteudo-pagina'>
         <div class='row'>
             <div class='col-12'>
-                <a class='btn btn-primary' href='editarenergia?id=00'>adicionar nova conta</a>
+                <a class='btn btn-primary botao-grande' href='editarenergia?id=00'>✚ adicionar nova conta</a>
                 <table class="table table-striped table-hover mt-2 energia">
-                    <tr>
-                        <th>data</th>
-                        <th>relogio 1</th>
-                        <th>kitnet 1</th>
-                        <th>relogio 2</th>
-                        <th>kitnet 2</th>
-                        <th>relogio 3</th>
-                        <th>kitnet 3</th>
-                        <th>valor por kwh</th>
-                        <th>valor da conta</th>
+                    <tr class='primeira-linha'>
+                        <th class='center-align'>data</th>
+                        <th class='center-align'>relogio 1</th>
+                        <th class='center-align'>kitnet 1</th>
+                        <th class='center-align'>relogio 2</th>
+                        <th class='center-align'>kitnet 2</th>
+                        <th class='center-align'>relogio 3</th>
+                        <th class='center-align'>kitnet 3</th>
+                        <th class='center-align'>valor por kwh</th>
+                        <th class='center-align'>valor da conta</th>
                         <th>&nbsp;</th>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@
                         <td class='small fw-bold' name='mes3valor3'>{{mes3ktn3}}</td>
                         <td class='small' name='kwhmes3'>{{mes3kwh}}</td>
                         <td class='small' name='totalmes3'>{{mes3total}}</td>
-                        <td class='small'><a class="btn-sm btn-primary"
+                        <td class='small'><a class="btn-sm btn-primary botao-pequeno"
                                 href="editarenergia?id={{busca_contas[3][0]}}&acao=nenhuma" role="button">editar</a>
                         </td>
                     </tr>
@@ -62,5 +62,5 @@
         </div>
     </div>
 </section>
-
+{% include('rodape.html') %}
 {% endblock %}
