@@ -23,11 +23,11 @@
                     <span for="relogio3" class="input-group-text">relogio 3</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="number" name='valor_kwh' class="form-control" id="valor_kwh">
+                    <input type="text" name='valor_kwh' class="form-control" id="valor_kwh">
                     <span for="valor_kwh" class="input-group-text">valor por kwh</span>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="number" name='valor_conta' class="form-control" id="valor_conta">
+                    <input type="text" name='valor_conta' class="form-control" id="valor_conta">
                     <span for="valor_conta" class="input-group-text">valor da conta</span>
                 </div>
                 <div>
@@ -54,12 +54,12 @@
                         <span for="relogio3" class="input-group-text">relogio 3</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="number" value='{{ energia[0][5] | replace(".",",")}}' name='valor_kwh'
+                        <input type="text" value='{{ energia[0][5] | replace(".",",")}}' name='valor_kwh'
                             class="form-control" id="valor_kwh">
                         <span for="valor_kwh" class="input-group-text">valor por kwh</span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="number" value='{{ energia[0][6] | replace(".",",")}}' name='valor_conta'
+                        <input type="text" value='{{ energia[0][6] | replace(".",",")}}' name='valor_conta'
                             class="form-control" id="valor_conta">
                         <span for="valor_conta" class="input-group-text">valor da conta</span>
                     </div>
