@@ -113,3 +113,6 @@ td > label{
   padding-top:0.5em;
   padding-left:1.5em;
 }
+.folha {
+  font-family: 'DejaVu Sans Mono', arial, "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}

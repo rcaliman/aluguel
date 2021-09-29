@@ -2,7 +2,9 @@ from urllib.parse import urlparse
 from flask import session
 import datetime
 from classe_energia import Energia
-
+from classe_cliente import Cliente
+from classe_imovel import Imovel
+import numero_por_extenso
 class MinhaUrl:
     def __init__(self, url):
         self.url = url
@@ -112,3 +114,21 @@ def data_brasil(data):
 def virgula_para_ponto(valor):
     valor = str(valor).replace(',','.')
     return valor
+
+def recibos(dados_recibo, mes, ano):
+    try:
+        telefones = f'<em style="padding-left:30px;font-size: 0.8em">{str(Cliente.seleciona_telefones(dados_recibo[4])[0][0])}</em>'
+        telefones += f'<em style="padding-left:30px;font-size: 0.8em">{str(Cliente.seleciona_telefones(dados_recibo[4])[0][1])}</em>'
+    except:
+        telefones = f'<em style="padding-left:30px;font-size: 0.8em">&nbsp;</em>'
+    html = f'<div style="font-family: \'Droid Sans Mono\';font-size: 1.5em;">'
+    html += f'<center><h2 style="padding-top:0.5em" class="pointer" onclick=javascript:location.href="/imoveis"><u>RECIBO</u></h2></center>'
+    html += f'<p>Recebi de <b><u>{dados_recibo[4]}</u></b> a importancia de {numero_por_extenso.monetario(dados_recibo[5])} '
+    html += f'referente ao aluguel da kitnet numero {dados_recibo[2]}.</p>'
+    html += f'<p align=right style="padding-top: 1.2em">Colatina, {dados_recibo[7]} de {mes} de {ano}</p>'
+    html += f'<center style="padding-top: 1.2em">___________________________________________________</center>'
+    html += f'<center>Darci Francisco Caliman<br>proprietário</center>'
+    html += f'<p align=right style="padding-bottom: 1.2em">{telefones}</p>'
+    html += f'</div>'
+    html += f'<hr style="border-top: 1px dashed; margin-bottom: 1.2em">'
+    return html

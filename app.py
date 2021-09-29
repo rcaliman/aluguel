@@ -158,18 +158,14 @@ def recibos():
     lista_de_id= []
     for a in ids:
         lista_de_id.append(ids[a]) 
-    
     dados_recibos = Imovel.busca_por_ids(lista_de_id)
     return render_template('recibos.html',
                     dados_recibos = dados_recibos,
                     extenso = numero_por_extenso.monetario,
-                    telefones = Cliente.seleciona_telefones,
                     mes = mes,
                     ano = ano,
-                    len = len,
-                    str = str
+                    recibos = u.recibos,
                     )
-
 
 @app.route('/energia', methods=['POST','GET'])
 def energia():
@@ -294,4 +290,4 @@ def deslogar():
     return render_template('login.html')
 
 
-app.run(host='0.0.0.0', port=5001)
+app.run(host='0.0.0.0', port=5001, debug=True)
