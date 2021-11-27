@@ -126,10 +126,13 @@ def recibos(dados_recibo, mes, ano):
     html += f'<center><h2 style="padding-top:0.5em" class="pointer" onclick=javascript:location.href="/imoveis"><u><b>RECIBO</b></u></h2></center>'
     html += f'<p>Recebi de <b><u>{dados_recibo[4]}</u></b> a importancia de {numero_por_extenso.monetario(dados_recibo[5])} '
     html += f'referente ao aluguel {imovel} {dados_recibo[1].lower()} numero {dados_recibo[2]}.</p>'
-    html += f'<p align=right style="padding-top: 1.2em">Colatina, {dados_recibo[7]} de {mes} de {ano}</p>'
+    if len(dados_recibo[4]) > 13:
+        html += f'<p align=right style="padding-top: 1em">Colatina, {dados_recibo[7]} de {mes} de {ano}</p>'
+    else:
+        html += f'<p align=right style="padding-top: 2.4em">Colatina, {dados_recibo[7]} de {mes} de {ano}</p>'
     html += f'<center style="padding-top: 1.2em">___________________________________________________</center>'
     html += f'<center>Darci Francisco Caliman<br>proprietário</center>'
     html += f'<p align=right style="padding-bottom: 1.2em">{telefones}</p>'
     html += f'</div>'
-    html += f'<hr style="border-top: 1px dashed; margin-bottom: 1.2em">'
+    html += f'<hr style="border-top: 1px dashed; margin-bottom: 2em">'
     return html
