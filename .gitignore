@@ -1,0 +1,5 @@
+# created by virtualenv automatically
+!templates
+venv
+__pycache__
+.vscode
