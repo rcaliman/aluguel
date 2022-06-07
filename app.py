@@ -289,5 +289,5 @@ def deslogar():
     session.pop('usuario', default=None)
     return render_template('login.html')
 
-
-app.run(host='0.0.0.0', port=5001)
+#app.run(host='0.0.0.0', port=5001)
+app.run(debug=True)
