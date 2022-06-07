@@ -1,8 +1,14 @@
+import json
+
 def parametros():
-	return	{
-				'database':'aluguel',
-               	'user':'aluguel',
-                'password':'4lugu3l',
-                'auth_plugin':'mysql_native_password',
-            }
+    arquivo = open('credenciais.txt', 'r')
+    dicionario = json.loads(arquivo.read())
+    arquivo.close()
+    return dicionario
+
+
+
+
+
+
 				
